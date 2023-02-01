@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Runescape Maintenance Plugin",
+  "version": "1.0.0",
+  "description": "Searches Twitter API for keyword 'maintenance' and bumps it to the top of the RS3 community news.",
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "assets/icons/icon16.png",
+      "24": "assets/icons/icon24.png",
+      "32": "assets/icons/icon32.png"
+    },
+    "default_title": "RS Maintenance"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "content/index.js"
+      ],
+      "matches": ["https://www.runescape.com/community"]
+    }
+  ],
+  "background": {
+    "service_worker": "background/index.js"
+  },
+  "web_accessible_resources": [{
+    "resources": [
+      "assets/icons/*.png"
+    ],
+    "matches": [],
+    "extension_ids": []
+  }],
+  "permissions": [
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://api.twitter.com/*"
+  ]
+}
